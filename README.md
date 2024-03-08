@@ -2,4 +2,4 @@
 
 *We need to add more to our introduction*
 
-![alt text](2DIsingModel.png)
+![title](2DIsingModel.png)
