@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 # import tqdm
 
 
-N = 20
+N = 100
 J = 1
 KB = 1
 
@@ -15,7 +15,7 @@ B_s = [-1, 0, 1]
 
 lattice_spins = np.ones((N, N))
 burnin_up = 100_000
-steps = 1_000_000
+steps = 500_000
 
 def MCMC(lattice_spins, temp, steps, B):
     m_values = []
