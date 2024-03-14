@@ -9,9 +9,9 @@ N = 100
 J = 1
 KB = 1
 
-n_temp, n_field = 21, 21
-temps = np.linspace(0.01,4.01,n_temp)
-B_s = np.linspace(-2,2,n_field)
+n_temp, n_field = 51, 2
+temps = np.linspace(0.01,5.01,n_temp)
+B_s = np.linspace(-0.05,0.05,n_field)
 
 lattice_spins = np.ones((N, N))
 burnin_up = 100_000
@@ -42,33 +42,31 @@ def MCMC(lattice_spins, temp, steps, B):
     return m_values
 
 def for_multi_processing(item):
-    m_values = MCMC(lattice_spins, item[0], steps, item[1])
+    m_values = np.array(MCMC(lattice_spins, item[0], steps, item[1]))
     m_mean = np.mean(m_values[burnin_up:])
-    m_std = np.std(m_values[burnin_up:])
-    return m_mean, m_std
+    return m_mean
 
 if __name__ == "__main__":
     with Pool(cpu_count()) as pool:
-        results = pool.map(for_multi_processing, itertools.product(temps, B_s), 1)
+        m_mean_list = pool.map(for_multi_processing, itertools.product(temps, B_s), 1)
 
-    stacked_results = np.stack(results)
-    m_means = stacked_results[:,0].reshape((n_temp,n_field))
-    m_stds = stacked_results[:,1].reshape((n_temp,n_field))
-
+    m_mean_list = np.array(m_mean_list).reshape(n_temp, n_field)
+    chi_list = (m_mean_list[:,1]-m_mean_list[:,0])/0.1
     print("Plotting...")
 
-    fig, ax = plt.subplots()
-    img = ax.imshow(m_means,cmap="YlGnBu")
-    plt.colorbar(img, label=r"$M$")
-    ax.invert_yaxis()
-    ax.set_xlabel(r"$B$")
-    ax.set_ylabel(r"$T$")
-    plt.hlines(2.269*5, 0, 20, colors="tab:orange",linestyles=":")
-    plt.vlines(10,0, 20, colors="tab:orange",linestyles="--")
-    plt.text(0.2, 10., "T = 2.269", color="tab:orange")
-    plt.text(6.8, 0.2, "B = 0", color="tab:orange")
-    ax.set_xticks(np.arange(0, n_field,5), np.round(B_s,1)[::5])
-    ax.set_yticks(np.arange(0, n_temp,5), np.round(temps,1)[::5])
-    plt.title(r"Phase Diagram in $B$ vs $T$")
-    plt.savefig("phase_diagram", dpi=600)
+    # fig, ax = plt.subplots()
+    # img = ax.imshow(chi_list,cmap="YlGnBu")
+    # plt.colorbar(img, label=r"$\chi$")
+    # ax.invert_yaxis()
+    # ax.set_xlabel(r"$B$")
+    # ax.set_ylabel(r"$T$")
+    # plt.hlines(2.269*5, 0, 20, colors="tab:orange",linestyles=":")
+    # plt.vlines(10,0, 20, colors="tab:orange",linestyles="--")
+    # plt.text(0.2, 10., "T = 2.269", color="tab:orange")
+    # plt.text(6.8, 0.2, "B = 0", color="tab:orange")
+    # ax.set_xticks(np.arange(0, n_field,5), np.round(B_s,1)[::5])
+    # ax.set_yticks(np.arange(0, n_temp,5), np.round(temps,1)[::5])
+    # plt.title(r"Susceptibility in $B$ vs $T$")
+    # # plt.savefig("phase_diagram", dpi=600)
+    plt.plot(temps,-chi_list)
     plt.show()
