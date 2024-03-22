@@ -1,9 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[1]:
-
-
 import numpy as np
 import matplotlib.pyplot as plt
 import tqdm
@@ -13,9 +7,6 @@ import matplotlib.animation as animation
 
 
 # ## Part A
-
-# In[2]:
-
 
 STEPS = 200_000
 N = 100
@@ -29,7 +20,7 @@ lattice_spins = np.ones((N, N))
 
 
 
-        
+#Plot of initial lattice        
 plt.figure()
 plt.imshow(lattice_spins, cmap="YlGnBu")
 for i in range(N):
@@ -41,11 +32,11 @@ plt.clim(-1, 1)
 plt.show()
 
 
-# In[3]:
+
 
 
 num_accept=0
-
+#Defining MCMC function
 def Hastings (B, T ,lattice, steps,shape):
     
     m_values=[]
@@ -72,7 +63,7 @@ def Hastings (B, T ,lattice, steps,shape):
 
 
 
-# In[4]:
+
 
 
 #Example of algorithm and graph of lattice
@@ -90,7 +81,7 @@ for i in range(N):
 plt.show()
 
 
-# In[5]:
+
 
 
 #Example of algorithm and graph of lattice
@@ -108,7 +99,7 @@ for i in range(N):
 plt.show()
 
 
-# In[6]:
+
 
 
 #Example of algorithm and graph of lattice
@@ -127,7 +118,7 @@ plt.show()
 
 
 
-# In[7]:
+
 
 
 #Example of algorithm and graph of lattice
@@ -144,13 +135,7 @@ for i in range(N):
 plt.show()
 
 
-# In[ ]:
 
-
-
-
-
-# In[8]:
 
 
 #Example of algorithm and graph of lattice
@@ -167,8 +152,6 @@ for i in range(N):
 plt.show()
 
 
-# In[9]:
-
 
 #Example of algorithm and graph of lattice
 temp_4, mean_4=Hastings(1,15,lattice_spins,200_000,100)
@@ -184,7 +167,7 @@ for i in range(N):
 plt.show()
 
 
-# In[ ]:
+
 
 
 
