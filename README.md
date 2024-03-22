@@ -2,4 +2,4 @@
 
 *We need to add more to our introduction*
 
-(2DIsingModel.png)
+!(2DIsingModel.png)
