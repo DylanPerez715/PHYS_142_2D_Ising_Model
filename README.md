@@ -1,4 +1,4 @@
-**This repository is going to store our final project for PHYS 142 for the Winter '24 quarter. Our problem is the 2D-Ising Model.**
+# PHYS 142 Final Project: 2D Ising Model
 
 Welcome to the repository dedicated to Monte Carlo Markov Chain (MCMC) simulations for exploring the properties of the 2D Ising model. This repository includes a series of files  for conducting simulations and generating plots that illustrate various aspects of the model.
 
@@ -19,3 +19,15 @@ Here is a table of the contents provided within this repository. Each file is de
 | PHYS142PartA.py | Produces an animation for the MCMC steps. Visualizes the final states of the system under different initial conditions.  |
 
 To obtain the desired results, simply execute each file. 
+
+
+## Group Members
+
+- Dylan Perez (dbperez@ucsd.edu)
+- Abijith Augustine (abaugustine@ucsd.edu)
+- Lynn Lin (xil244@ucsd.edu)
+- Charles Cody (cjcody@ucsd.edu)
+
+
+## Acknowledgments
+  The authors would like to thank Professor Javier Duarte and Teaching Assistant Xiaoyi Wu for their tremendous help during the quarter and with the project.
