@@ -1,9 +1,21 @@
 **This repository is going to store our final project for PHYS 142 for the Winter '24 quarter. Our problem is the 2D-Ising Model.**
 
-*We need to add more to our introduction*
+Welcome to the repository dedicated to Monte Carlo Markov Chain (MCMC) simulations for exploring the properties of the 2D Ising model. This repository includes a series of files  for conducting simulations and generating plots that illustrate various aspects of the model.
 
-!(2DIsingModel.png)
+![An example of 2D Ising Model](./2DIsingModel.png)
 
-Burnin_Heat_Conclusion_plots.ipynb
-This is a python notebook that contains the code for creating the figures for Burnin steps, The magnetization vs temperature and B field plot shown in the presentation. This file also contains the calcualtions done to dind the specific heat and the plots as well as the critical exponent as well. 
-In order to run the file, you run cells under each section. The section provide the guide to ditinguish each cells and which part it corresponds to. 
+
+## File Overview
+
+Here is a table of the contents provided within this repository. Each file is designed to facilitate a specific part of the simulation process and data visualization:
+
+| Filename    | Description | 
+| -------- | ------- |
+| Burnin_Heat_Conclusion_plots.ipynb | Creates visualizations for choosing Burn-in steps, figures of M vs T and M vs B, plots for specific heat, and calculates the critical exponent of specific heat.  |
+| PHYS142FinalProj_PartB_MvsB.py  | Creates a plot of magnetization vs. magnetic field, implemented with multiprocessing package.  |
+| PHYS142FinalProj_PartB_MvsT.py |  Creates a plot of magnetization vs. temperature, implemented with multiprocessing package. |
+| PHYS142FinalProj_PartC.py    |  Creates a phase diagram of magnetization in temperature and magnetic field, implemented with multiprocessing package.  |
+| PHYS142FinalProj_Susceptibility.py | Creates a plot of susceptibility vs. temperature, implemented with multiprocessing package. |
+| PHYS142PartA.py | Produces an animation for the MCMC steps. Visualizes the final states of the system under different initial conditions.  |
+
+To obtain the desired results, simply execute each file. 
